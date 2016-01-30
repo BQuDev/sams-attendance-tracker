@@ -1,0 +1,875 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>
+      BQu SAMS Mobile
+    </title>
+    <link rel="stylesheet" href="themes/Bootstrap.css">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile.structure-1.4.0.min.css" />
+    <link rel="stylesheet" href="themes/jquery.mobile.icons.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+    <script src="res/js/jquery-1.8.2.min.js">
+    </script>
+    <script src="res/js/jquery.mobile-1.4.0.js">
+    </script>
+  </head>
+  <body  onload="onLoad()">
+  
+  <div data-role="page" data-theme="a" id="splash">
+  <img class="front_img" src="themes/images/icons-png/splash.png">
+</div>
+
+    <div data-role="page" data-theme="a" id="login">
+      <div data-role="content" data-theme="a">
+        
+        <figure id="topimg">
+          <img class="front_img" align="middle" src="themes/images/icons-png/sams_logo.png">
+        </figure>
+        <br />
+        
+        
+        <label for="name">
+          User name:
+        </label>
+        <input type="text" name="username" id="username" placeholder="username"  />
+        
+        <br>
+        <br>
+        
+        <label for="name">
+          Password:
+        </label>
+        <input type="text" name="password" id="password" placeholder="Password"  />
+        
+        <br>
+        <br>
+        <a href="#" data-role="button" data-theme="b" onClick="login();">
+          Login
+        </a>
+        
+		
+      </div>
+      
+      
+      
+      </div>
+      
+      
+      
+      <div data-role="page" data-theme="a" id="pagea">
+        
+        <div data-role="content" data-theme="a">
+          
+          <br />
+          <figure id="topimg">
+             <h3 style="color:#0052BA;"><img class="front_img" align="middle" src="themes/images/icons-png/sams_logo.png"> <br>
+           Mobile <span style="font-size:0.8em;">&trade;</span></h3>
+          </figure>
+          <br />
+          <p>
+            <a href="#student_management" onclick="all_students()">
+              
+              <img class="front_img" src="themes/images/icons-png/stu_mgt.jpg">
+            </a>
+            <br />
+            <br />
+            
+            <a href="#attendance_management">
+              <img class="front_img" src="themes/images/icons-png/atte_mgt.png">
+            </a>
+          </p>
+          
+        </div>
+        <br>
+        <div data-role="footer" data-position="fixed" data-theme="b" >
+          <h1>
+            2014 &copy; BQu SAMS 
+          </h1>
+        </div>
+      </div>
+      <div data-role="page" id="student_management">
+      <div data-role="header" data-position="inline" class="header_bg">
+				<h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/stu_mgt_head.png">&nbsp;&nbsp;Student managment</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+        
+        
+        <div data-role="content" data-theme="a">
+          
+          
+          
+          <p>
+            <form>
+              <input id="filterTable-input" data-type="search" >
+          </form>
+          <table data-role="table" id="students_table" data-filter="true" data-input="#filterTable-input" data-mode="columntoggle" class="ui-responsive table-stroke" >
+            <thead>
+              <tr>
+                
+                <th data-priority="1">
+                  First Name
+                </th>
+                <th data-priority="1">
+                  Last Name
+                </th>
+                <!--<th data-priority="2">
+                  E-mail
+                </th>
+                <th data-priority="3">
+                  QR code
+                </th>-->
+              </tr>
+            </thead>
+            <tbody id="dynamic_table_data">
+             <!-- <tr>
+                <td>
+                  Nash
+                </td>
+                <td>
+                  Nunez
+                </td>
+                <td>
+                  Lorem.ipsum.dolor@semmolestiesodales.ca
+                </td>
+                <td>
+                  Registered
+                </td>
+                <td>
+                  QR
+                </td>
+              </tr>
+              -->
+            </tbody>
+          </table>
+        </p>
+        
+      </div>
+      <div data-role="footer" data-position="fixed" data-theme="b">
+        <h1>
+          2014 &copy; BQu SAMS 
+        </h1>
+      </div>
+      
+  </div>
+  
+      <div data-role="page" data-theme="a" id="registered_students">
+        
+		 <div data-role="header" data-position="inline" class="header_bg">
+				<h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/stu_mgt_head.png">&nbsp;&nbsp;Registered students in the session</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+		
+        <div data-role="content" data-theme="a">
+          
+          
+          
+          <p>
+            <form>
+              <input id="filterTable-input" data-type="search" >
+          </form>
+          <table data-role="table" id="registered_students_table" data-filter="true" data-input="#filterTable-input" data-mode="columntoggle" class="ui-responsive table-stroke" >
+            <thead>
+              <tr>
+                
+                <th data-priority="1">
+                  First Name
+                </th>
+                <th data-priority="1">
+                  Last Name
+                </th>
+                <!--<th data-priority="2">
+                  E-mail
+                </th>
+                <th data-priority="3">
+                  QR code
+                </th>-->
+              </tr>
+            </thead>
+            <tbody id="dynamic_student_table_data">
+             <!-- <tr>
+                <td>
+                  Nash
+                </td>
+                <td>
+                  Nunez
+                </td>
+                <td>
+                  Lorem.ipsum.dolor@semmolestiesodales.ca
+                </td>
+                <td>
+                  Registered
+                </td>
+                <td>
+                  QR
+                </td>
+              </tr>
+              -->
+            </tbody>
+          </table>
+        </p>
+        
+      </div>
+      <div data-role="footer" data-position="fixed" data-theme="b">
+        <h1>
+          2014 &copy; BQu SAMS 
+        </h1>
+      </div>
+      
+  </div>
+  
+  <div data-role="page" data-theme="a" id="attendance_management">
+  <div data-role="header" data-position="inline" class="header_bg">
+				<h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/att_mgt_head.png">&nbsp;&nbsp;Attendance managment</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+    
+    <div data-role="content" data-theme="a">
+      
+     
+      
+      <br/>
+  
+      
+      <form action="#" method="get" class="form-horizontal">
+        
+        
+        
+        <div class="control-group">
+          <label class="control-label">
+            <h4 style="color:#0044CC;">Session name:</h4>
+          </label>
+          <div class="controls ">
+			<select id="lec_session_id">
+				<option value="">Select Session</option>
+			</select>
+          </div>
+        </div>
+        <br />
+		
+        <div id="lec_session_details">
+			<table border="0">
+			<tr>
+				<td><h4 style="color:#0044CC;">Module name</h4></td>
+				<td>:</td>
+				<td><span id="module_name_details"></span></td>
+			</tr>
+			<tr>
+				<td><h4 style="color:#0044CC;">Session title</h4></td>
+				<td>:</td>
+				<td><span class="session_title_details"></span> </td>
+			</tr>
+			<tr>
+				<td><h4 style="color:#0044CC;">Start time</h4></td>
+				<td>:</td>
+				<td><span id="start_time_details"></span></td>
+			</tr>
+			<tr>
+				<td><h4 style="color:#0044CC;">End time</h4></td>
+				<td>:</td>
+				<td><span id="end_time_details"></span></td>
+			</tr>
+			</table>
+        </div>
+        
+        <!--
+<div class="form-actions">
+<a title="" href="#student_sign_in">
+<button type="button" class="btn btn-large">
+Add attendance
+</button>
+</a>
+</div>
+-->
+              </form>
+              <br>
+              <br>
+              
+		<!--
+              <div class="ui-block-a">
+                <a href="#registered_students">
+				  <button type="button"  data-theme="b"  onClick="all_students_by_session_id();">
+                  All registered students
+                </button>
+                </a>
+              </div>
+              <div class="ui-block-b">
+                <a href="#student_sign_in">
+				  <button type="button"  data-theme="b"  onClick="scan();">
+                  Capture attendance
+                </button>
+                </a>
+              </div>
+        --> 
+
+			<table border="0">
+			  <tr>
+			  <td width="50%" style="margin-right:3%">
+			  <a href="#registered_students"><button   onClick="all_students_by_session_id();" type="button" data-theme="b">All registered students</button></a>
+			  </td>
+			  <td width="40%"><a href="#student_sign_in"><button type="button"    onClick="scan();" data-theme="c">Capture attendance</button></a></td>
+			  </tr>
+			  </table>
+          </div>
+          
+          
+          <div data-role="footer" data-position="fixed" data-theme="b">
+            <h1>
+              2014 &copy; BQu SAMS 
+            </h1>
+          </div>
+          
+  </div>
+  
+  
+  <div data-role="page" data-theme="a" id="student_sign_in">
+  <div data-role="header" data-position="inline" class="header_bg">
+				<h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/stu_mgt_head.png">&nbsp;&nbsp;Signed in students</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+    
+    
+    <div data-role="content" data-theme="a">
+    
+    <br>
+	<div> <h4 style="color:#0044CC;">Session :<span class="session_title_details"></span></h4></div>
+	<br>
+	<div id='signed_in_students'></div>
+	<br>
+	<!-- <div id='xxx'>xxx</div> -->
+	<br>
+    <script type="text/javascript" src="phonegap.js">
+    </script>
+    <script src="barcodescanner.js">
+    </script>
+    <div class="app"></div>
+      
+      <!--
+      <div align="center" valign="center">
+        
+        <a href="#" data-role="button" onClick="scan();" >
+          Scan again
+        </a>
+        
+        <br />
+        
+        
+        <a href="#" data-role="button"" >
+          Upload to server
+        </a>
+      </div>
+      -->
+      
+   
+              <table border="0">
+			  <tr>
+			  <td width="35%" style="margin-right:3%">
+			  <a href="#"><button  onClick="scan();" type="button" data-theme="b">Scan again</button></a>
+			  </td>
+			  <td width="55%"><a href="#"><button type="button"   onClick="sync();" data-theme="c">Upload to the server</button></a></td>
+			  </tr>
+			  </table>
+								   
+								   
+								   
+								   
+    
+              </div>
+              <br>
+              <div data-role="footer" data-position="fixed" data-theme="b">
+                <h1>
+                  2014 &copy; BQu SAMS 
+                </h1>
+              </div>
+              
+  </div>
+  
+  
+<div data-role="page" data-theme="a" id="offline">
+   <div data-role="header" data-position="inline" class="header_bg">
+    <h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/att_mgt_head.png">&nbsp;&nbsp;Message page</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+
+    <div data-role="content" data-theme="a">
+    <br>
+     <br>
+      <br> <br>
+       <br>
+    
+  <ul data-role="listview" data-inset="true" data-divider-theme="c">
+     <li data-role="list-divider">You are Offline</li>
+     <li data-icon="info"><a href="">You are offline. Please check your network and try again.</a></li>
+                    
+ </ul> 
+   
+    </div>
+    
+     <br>
+              <div data-role="footer" data-position="fixed" data-theme="b">
+                <h1>
+                  2014 &copy; BQu SAMS 
+                </h1>
+              </div>
+  
+  </div>
+  
+<div data-role="page" data-theme="a" id="new_registered">
+   <div data-role="header" data-position="inline" class="header_bg">
+    <h1 style="margin-left:3%; text-align:left;"> <img src="themes/images/icons-png/att_mgt_head.png">&nbsp;&nbsp;Successfully registered</h1>
+               <div class="border">&nbsp;</div>
+        </div>
+
+    <div data-role="content" data-theme="a">
+    <br>
+     <br>
+      <br> <br>
+       <br>
+    
+  <ul data-role="listview" data-inset="true" data-divider-theme="d">
+     <li data-role="list-divider">Success</li>
+     <li data-icon="check"><a href="">This device successfully registered with your BQu SAMS account.</a></li>
+                    
+ </ul> 
+   
+    </div>
+    
+     <br>
+              <div data-role="footer" data-position="fixed" data-theme="b">
+                <h1>
+                  2014 &copy; BQu SAMS 
+                </h1>
+              </div>
+  
+  </div>
+
+  <div data-role="page" id="student_more_info">
+
+	<div data-role="header">
+		<h1>Student Details</h1>
+	</div><!-- /header -->
+	
+<ol data-role="listview">
+    <li>First Name : <span id="panel_first_name"></span></li>
+    <li>Last Name : <span id="panel_last_name"></span></li>
+  <!--  <li>E-mail :<span id="panel_emale"></span></li>
+    <li>Status :<span id="panel_status"></span></li>
+    <li>Registration Type :<span id="panel_registration_type"></span></li>-->
+</ol><br />
+<a class="ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left ui-btn-inline" data-rel="close" href="#student_management">Back</a>
+
+<div data-role="footer">
+		<h4>Page Footer</h4>
+	</div><!-- /footer -->
+	
+	
+</div><!-- /panel -->
+
+<!--  Popup 
+
+<div data-role="popup" id="qr_error_popupBasic" class="ui-content" data-position-to="window" data-theme="a" data-transition="fade">
+ <a href="#" data-rel="back" data-role="button" data-theme="a" data-icon="delete" data-iconpos="notext" class="ui-btn-right">Close</a>
+ Please register with the module
+</div>
+-->
+
+<script type="text/javascript">
+
+	var lec_id = 0;
+	
+	function onLoad() {
+		//alert('onLoad');
+		checkConnection();		
+		
+	}
+
+	function checkConnection() {
+	
+	//alert(navigator.network.connection.type);
+			/*
+		if((navigator.network.connection.type).toUpperCase() == "NONE" && 
+						(navigator.network.connection.type).toUpperCase() == "UNKNOWN") {*/
+		if(navigator.network.connection.type == "none") {
+			navigator.splashscreen.hide();
+			//alert('Device Offline.');
+			$.mobile.pageContainer.pagecontainer("change", "#offline", {
+				transition: "fade"
+			});
+			
+		}else{
+			//alert('Device online..');
+			onDeviceReady();
+		}
+	}
+
+
+
+	function onDeviceReady() {
+
+			//alert('onDeviceReady');
+			$.mobile.loading('show');
+			$.ajax({
+			  type: 'POST',
+			  dataType   : 'jsonp',
+			  data: {'uuid': device.uuid},
+			  crossDomain: true,
+			  url: "http://bquelibrary.com/bqu_uni_mobile/get_lec_id_by_uuid.php",
+			  success: function(data){//alert(data);
+			  $.mobile.loading('hide');
+			  navigator.splashscreen.hide();
+				var responce = JSON.parse(data[0]);
+				//$.mobile.loading('hide');
+				$.each(JSON.parse(data[0]), function(i,obj){
+					if(obj['lec_id']=='-1'){
+					//alert('onDeviceReady -1');
+						 $.mobile.pageContainer.pagecontainer("change", "#login", {
+							transition: "fade"
+						});
+					}
+					else if(obj['lec_id']=='-2'){
+					
+						//alert('onDeviceReady -2');
+						 $.mobile.pageContainer.pagecontainer("change", "#login", {
+							transition: "fade"
+						});
+					}
+					else{lec_id = obj['lec_id'];//alert('onDeviceReady else');
+						$.mobile.pageContainer.pagecontainer("change", "#pagea", {
+							transition: "fade"
+						});
+					}
+				});
+			  }
+			  ,
+			  error: function (xhr, ajaxOptions, thrownError) {
+				$.mobile.loading('hide');
+				alert("Sorry. Cannot connect with the server");
+			  }
+			});
+		}
+		
+		
+	function login() {
+		
+		//alert('login');
+		/*
+		  var mobile_no = 0;
+		   var telephoneNumber = cordova.require("cordova/plugin/telephonenumber");
+			   telephoneNumber.get(function(result) {
+			   mobile_no = result;
+			}, function() {
+				alert("error");
+			});
+		*/
+			$.mobile.loading('show');
+			$.ajax({
+			  type: 'POST',
+			  dataType   : 'jsonp',
+			  data: {'username': $( "#username" ).val(),
+					 'password':$( "#password" ).val(),
+					 'device_uuid':device.uuid,
+					 'device_name':device.name,
+					 'device_platform':device.platform,
+					 'device_version':device.version,
+					 'device_mobile_no':''
+					 },
+			  crossDomain: true,
+			  url: "http://bquelibrary.com/bqu_uni_mobile/login.php",
+			  success: function(data){//alert(data);
+				$.mobile.loading('hide');
+				var responce = JSON.parse(data[0]);
+				//alert(responce);
+				
+				
+				$.each(JSON.parse(data[0]), function(i,obj){
+					if(obj['is_logged_in']=='-1'){//alert('login -1');
+						 $.mobile.pageContainer.pagecontainer("change", "#login", {
+							transition: "fade"
+						});
+					}
+					else if(obj['is_logged_in']=='-2'){
+					//alert('login -2');
+						 $.mobile.pageContainer.pagecontainer("change", "#login", {
+							transition: "fade"
+						});
+					}
+					else{lec_id = obj['is_logged_in'];//alert('login else');
+						$.mobile.pageContainer.pagecontainer("change", "#pagea", {
+							transition: "fade"
+						});
+					}
+				});
+			  }
+			  ,
+			  error: function (xhr, ajaxOptions, thrownError) {
+				$.mobile.loading('hide');
+				alert("Sorry. Cannot connect with the server");
+			  }
+			});		
+		
+		}
+	
+		
+	var drop_down_data='';	
+	function load_drop_down(){
+
+	$.mobile.loading('show');
+
+	var d = new Date();
+	device_date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate();
+
+	$('#lec_session_id').empty();
+	
+	$('#lec_session_id').append(
+					 $('<option></option>')
+							.val('')
+							.html('Select Session'));
+							
+	   $.ajax({
+		  type: 'POST',
+		  dataType   : 'jsonp',
+		  data: {'lec_id': lec_id ,'device_date':device_date},
+		  crossDomain: true,
+		  url: "http://bquelibrary.com/bqu_uni_mobile/details_by_lec_id.php",
+		  success: function(data){
+			drop_down_data = data;
+			$.each(JSON.parse(data[0]), function(i,obj){
+				//alert(obj['module_name']);
+				$('#lec_session_id').append(
+					 $('<option></option>')
+							.val(obj['timetable_id']+'_'+obj['array_no'])
+							.html(obj['title']));
+			});
+			$.mobile.loading('hide');
+			$(".ui-page").trigger( "create" );
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+			alert("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+		  }
+		});
+			  
+			  
+	}
+
+	var session_id = 0;
+	$( "#lec_session_id" ).change(function() {
+	
+		var res = $( "#lec_session_id" ).val().split("_");
+		session_id = res[0];
+		//console.info(res);
+		
+		var parsed_drop_down_data = JSON.parse(drop_down_data[res[1]]);
+		$.each(parsed_drop_down_data, function(i,obj){
+				
+				$('#module_name_details').empty();
+				$('.session_title_details').empty();
+				$('#start_time_details').empty();
+				$('#end_time_details').empty();
+				
+				
+				$('#module_name_details').html(obj['module_name']);
+				$('.session_title_details').html(obj['title']);
+				$('#start_time_details').html(obj['start_time']);
+				$('#end_time_details').html(obj['end_time']);
+		});
+		get_all_registered_students();
+	});
+	var logged_students = [];
+	var get_registered_students = '';
+	
+	function scan() {
+		
+		
+		
+		cordova.plugins.barcodeScanner.scan(
+		  function (result) {
+			
+			
+			//alert(logged_students+ result.format);
+			if(result.cancelled == false){
+			check_qr(result.text);
+			  scan();
+			}else{
+				//alert('else worked');
+				$.mobile.pageContainer.pagecontainer("change", "#student_sign_in", {
+							transition: "fade"
+				});
+			}
+		  }, 
+		  function (error) {
+			//alert("Scanning failed: " + error);
+			$.mobile.pageContainer.pagecontainer("change", "#student_sign_in", {
+							transition: "fade"
+			});
+			
+		  });
+	}
+	
+	var check_already_in = [];
+	var list_no = 0;
+	function check_qr(qr_code){ 
+		//alert(qr_code);
+		var not_registered_with_this_session = 0;//$('#xxx').empty();
+		$.each(get_registered_students, function(i,obj){
+		
+		//$('#xxx').append(obj['qr_code']+',<br>');
+			if(qr_code == obj['qr_code']){
+			var found = $.inArray(obj['qr_code'], check_already_in) == -1;
+			  if(found){
+				  list_no++;
+				  not_registered_with_this_session = 1;
+				  alert(obj['student_name']+' signed in.');
+				  var d = new Date();
+				  currunt_date = d.getFullYear()+'-'+(d.getMonth()+1)+'-'+d.getDate()
+				  currunt_time = (d.getHours()+1)+':'+d.getMinutes();
+				  var res = $( "#lec_session_id" ).val().split("_");
+				  var student = [currunt_time,obj['qr_code'], device.uuid,res[0],currunt_date];
+				  logged_students.push(student);
+				  check_already_in.push(obj['qr_code']);
+				  $('#signed_in_students').append('<br>'+list_no+'. '+obj['student_name']);
+			  }else{
+					alert('You already signed in');
+					not_registered_with_this_session = 1;
+			  }
+			}
+		});
+		if(not_registered_with_this_session == 0){
+			//$('#qr_error_popupBasic').popup('open');
+			alert('Please register with the module');
+			}
+	}
+  
+	function get_all_registered_students(){
+	//alert('get_all_registered_students');
+		$.mobile.loading('show');
+		var res = $( "#lec_session_id" ).val().split("_");
+		
+		$.ajax({
+		  type: 'POST',
+		  dataType   : 'jsonp',
+		  data: {'session_id': res[0] },
+		  crossDomain: true,
+		  url: "http://bquelibrary.com/bqu_uni_mobile/select_students_by_session_id.php",
+		  success: function(data){
+		  get_registered_students = JSON.parse(data[0]);
+		  //console.log(json_response[0].student_name);
+			/*
+			$.each(JSON.parse(data[0]), function(i,obj){
+				alert(obj['module_name']);
+				$('#lec_session_id').append(
+					 $('<option></option>')
+							.val(obj['timetable_id']+'_'+obj['array_no'])
+							.html(obj['title']));
+			});*/
+			$.mobile.loading('hide');
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+			alert("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+		  }
+		});
+	
+	}
+	
+	
+	function sync() {
+	 $.mobile.loading('show');
+		$.ajax({
+		  type: 'GET',
+		  dataType   : 'jsonp',
+		  data: {'dataString': logged_students},
+		  crossDomain: true,
+		  url: "http://bquelibrary.com/bqu_uni_mobile/student_fetch.php",
+		  success: function(data){
+			$.mobile.loading('hide');
+			  alert(data);
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+			alert("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+		  }
+		});
+	}
+	
+	var row = '';
+	function all_students(){
+	$("#dynamic_table_data").empty();
+	//alert('all_students');
+	var row = '';
+		 $.ajax({
+		  type: 'POST',
+		  dataType   : 'jsonp',
+		  data: {'lec_id': lec_id },
+		  crossDomain: true,
+		  url: "http://bquelibrary.com/bqu_uni_mobile/students_by_lec_id.php",
+		  success: function(data){
+			//console.log(JSON.parse(data[0]));
+			$.each(JSON.parse(data[0]), function(i,obj){
+				//alert(obj['first_name']);
+				row	 = 	"<tr><td>"+obj['first_name']+"</td><td>"+obj['last_name']+"</td><td></tr>";
+				 $("#dynamic_table_data").append(row);	
+			});
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+			alert("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+		  }
+		});
+		$( "#students_table" ).table( "refresh" );
+		$("#students_table").trigger( "create" );
+		
+	}
+	
+	
+	var row = '';
+	function all_students_by_session_id(){
+	$("#dynamic_student_table_data").empty();
+	//alert('all_students_by_session_id');
+	var row = '';
+		 $.ajax({
+		  type: 'POST',
+		  dataType   : 'jsonp',
+		  data: {'session_id': session_id },
+		  crossDomain: true,
+		  url: "http://bquelibrary.com/bqu_uni_mobile/registered_students_by_session_id.php",
+		  success: function(data){//alert('success');
+			//console.log(JSON.parse(data[0]));
+			$.each(JSON.parse(data[0]), function(i,obj){
+				
+				row	 = 	"<tr><td>"+obj['first_name']+"</td><td>"+obj['last_name']+"</td><td></tr>";
+				 $("#dynamic_student_table_data").append(row);	
+			});
+		  },
+		  error: function (xhr, ajaxOptions, thrownError) {
+			alert("errorstatus: " + xhr.status + " ajaxoptions: " + ajaxOptions + " throwError: " + thrownError);
+		  }
+		});
+		$( "#registered_students_table" ).table( "refresh" );
+		$("#registered_students_table").trigger( "create" );
+		//$.mobile.changePage( "#registered_students", { transition: "fade", changeHash: false });
+	}
+	
+	//$( function() {
+	//$('#students_table tbody tr').click(function() {
+
+		//  var first_name =  $(this).children("td:nth-child(1)").text();
+		//  var last_name = $(this).children("td:nth-child(2)").text();
+		  /*var email = $(this).children("td:nth-child(3)").text();
+		  var status = $(this).children("td:nth-child(4)").text();
+		  var r_type = $(this).children("td:nth-child(5)").text();*/
+	   
+	   //$('#panel_first_name').html(first_name);
+	   //$('#panel_last_name').html(last_name);
+	   /*$('#panel_emale').html(email);
+	   $('#panel_status').html(status);
+	   $('#panel_registration_type').html(r_type);*/
+	  //  $( "#student_more_info" ).trigger( "updatelayout" );
+		//$( "#student_more_info" ).page( "open");
+		
+		//$.mobile.changePage( "#student_more_info", { transition: "fade", changeHash: false });
+
+		//});
+	//});
+  
+  $( document ).on( "pageshow", "#attendance_management", function() {load_drop_down();});
+</script>
+</body>
+</html>
